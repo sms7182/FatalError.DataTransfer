@@ -130,10 +130,10 @@ namespace Server.App
                         
                         memory.TryAdd(file, file);
                         builder.AppendLine("Max word in number lines:");
-                       
-                        for(var i= 0; i < lines.Length; i++)
+                        var regexMaxWord = new Regex($"\\b({maxword})\\b");
+                        for (var i= 0; i < lines.Length; i++)
                         {
-                            if (lines[i].Contains(maxword))
+                            if (regexMaxWord.Match(lines[i]).Success)
                             {
                                 builder.Append($"{i + 1},");
                             }
